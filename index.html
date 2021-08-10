@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+     <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+    />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <script>
+      window.onload = () => {
+        let artistObject = ""
+        fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
+	method: "GET",
+	headers: {
+		"x-rapidapi-key": "ee2d36b39fmsh97cf1f56660e250p12cdf8jsn85080d3b2768",
+		"x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com"
+        }
+        })
+        .then(response) => {
+          console.log(response)
+          return response.json()
+        }).then((jsonRes) => {
+          console.log(jsonRes);
+          jsonRes.data
+        })
+      }
+
+      
+        /* .then(artistInfo => {
+          artistObject = artistInfo.data
+          console.log(artistObject)
+          artistName = document.getElementById("artistName")
+          artistName.innerText = artistObject[0].artist.name
+  
+          artistImage = document.querySelectorAll("[id=queenSize]")
+          // console.log(artistImage)
+  
+          for (let i = 0; i < artistImage.length; i++) {
+            artistImage[i].src = artistObject[i].album.cover
+          }
+  
+          trackName = document.querySelectorAll("[id=trackName]")
+          
+          for (let i = 0; i < trackName.length; i++) {
+            trackName[i].innerText = artistObject[i].title
+          }
+          
+        })
+        .catch(err => {
+          console.error(err);
+        })
+      })
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+<script src="spotifyclone.js"></script>
+    <link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;1,400;1,500&display=swap"
+      rel="stylesheet"/>
+  </head>
+  
+  <body class="home-body">
+    <div class="d-none d-sm-flex sidebar-container" id="main-content">
+    <div class="sidebar" >
+      <ul class="nav flex-column navbar-dark d-flex h-60">
+      <li class="nav-item mb-2 text-white">
+        <img class="pl-2 pt-3" src="./logo/spotifiy.png"height = "40px" width="auto" alt="" srcset="">
+      </li>
+      <li class="nav-item text-white pl-2 activehome">
+        <h6><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+         <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+       </svg> <a  href="#" >Home</a></h6> 
+      
+       </li>
+       <li class="nav-item text-white ml-2 ">
+         <h6><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+         </svg><a  href="#"> Search</a></h6>
+       </li>
+       <li class="nav-item text-white ml-2 mb-4">
+        <h6> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-distribute-horizontal" viewBox="0 0 16 16">
+         <path fill-rule="evenodd" d="M14.5 1a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5zm-13 0a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 1 0v-13a.5.5 0 0 0-.5-.5z"/>
+         <path d="M6 13a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v10z"/>
+       </svg> <a  href="#">Your Library</a> </h6> 
+       </li>
+       <li class="nav-item text-white ml-2"> 
+        <h6> <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+         <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+       </svg><a  href="#"> Create Playlist</a></h6>
+       </li>
+       <li class="nav-item text-white ml-2 mb-0">
+         <h6><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+           <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+         </svg><a  href="#"> Liked Songs</a></h6>
+        
+      </li>
+
+      </ul>
+      <hr style="color: rgb(102, 102, 102)">
+    <div class="pl-2 pb-5 mb-5 scrollbar-list">
+
+      <!-- style="overflow:scroll; height: 300px;  scrollbar-color: dark; -->
+      
+        <a class="click-me" href="#"><h6>Funky Heavy Bluesy</h6></a>
+        <a class="click-me " href="#"><h6>Your Top Songs 2020</h6></a>
+ 
+        <a class="click-me " href="#"><h6>In Love With You-</h6></a>
+ 
+        <a class="click-me" href="#"><h6>This Is Rod Stewart</h6></a>
+ 
+        <a class="click-me" href="#"><h6>FRANCHISE ft.Young Thug...</h6></a>
+ 
+        <a class="click-me" href="#"><h6>Your Top Songs 2019</h6></a>
+        <a class="click-me" href="#"><h6>Palleggio</h6></a>
+        <a class="click-me" href="#"><h6>This is Joe Bonamassa</h6></a>
+ 
+        <a class="click-me" href="#"><h6>Jun19</h6></a>
+ 
+        <a class="click-me" href="#"><h6>Jack 30th Party 2</h6></a>
+ 
+        <a class="click-me" href="#"><h6>Jack 30th Party</h6></a>
+        <a class="click-me" href="#"><h6>This is Opeth</h6></a>
+        <a class="click-me" href="#"><h6>Matal Ballads</h6></a>
+        <a class="click-me" href="#"><h6>New Playlist</h6></a>
+ 
+        <a class="click-me" href="#"><h6>You Top Songs 2018</h6></a>
+ 
+        <a class="click-me" href="#"><h6>Jazz Classics Blune Note Editi...</h6></a>
+      
+      <h6 class="text-white ml-3 fixedLink"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+      </svg><a class="text-white" href="#">  Install App</h6></a>
+     
+
+
+      </div>
+      
+      <!-- <hr class="lowerhr" style="color: rgb(116, 113, 113)"> -->
+      
+    
+    
+   
+    </div>
+    </div>
+    <div class="main-container">
+
+    <div class="opening-sect">
+      <div class="container-fluid">
+        <div class="row title-row pt-5 ml-3">
+          <h2 class="section-heading1">Good Morning</h2>
+        </div>
+        <div id="good-morning-row" class="row row-cols-2 row-cols-md-5 ml-2 mr-1">
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/closing-time.png" alt="" />
+              <h5>Closing Time</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/electric-warrior.png" alt="" />
+              <h5>Electric Warrior</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/eminem-show.png" alt="" />
+              <h5>The Eminem Show</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/funeral.png" alt="" />
+              <h5>Funeral</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/good-kid-mad-city.png" alt="" />
+              <h5>Good Kid Mad City</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/grand-corps-malade.png" alt="" />
+              <h5>Grand Corps Malade</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/hot-fuss.png" alt="" />
+              <h5>Hot Fuss</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/illimatic.png" alt="" />
+              <h5>illimatic</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/kasabian.png" alt="" />
+              <h5>Kasabian</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+          <div class="col px-1">
+            <div class="morning-card">
+              <img src="assets/chronic-dre.png" alt="" />
+              <h5>The Chronic</h5>
+              <div class="play-button-div2">
+            <i class="bi bi-play-circle-fill play-button2"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row title-row mt-3 ml-3">
+          <h2 class="section-heading">Recently Played</h2>
+          <button id="first-see-all" class="see-all-button" onclick="seeAllOne()"><h4 class="see-all mb-1 mr-5">SEE ALL</h4></button>
+        </div>
+      </div>
+    </div>
+    <!-- RECENTLY PLAYED  -->
+    <div class="container-fluid">
+      <div id="recently-played-row" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 ml-2 mr-1">
+        <!-- <div id="recently-played-row" class="row row-cols-2">
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/an-awesome-wave.png" alt="">
+            <h5>Alt-J</h5>
+            <p>1981 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+            <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont" id="fontaines">
+            <img src="assets/dogrel.png" alt="">
+            <h5>Fontaines DC</h5>
+            <p>2019 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+         <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/strokes.png" alt="">
+            <h5>The Strokes</h5>
+            <p>1981 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/mgmt.png" alt="">
+            <h5>MGMT</h5>
+            <p>1981 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/nevermind.png" alt="">
+            <h5>Nirvana</h5>
+            <p>1981 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/nwa.png" alt="">
+            <h5>N.W.A.</h5>
+            <p>1981 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <!-- <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/radiohead.png" alt="">
+            <h5>Radiohead</h5>
+            <p>1981 - Album</p>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/sigh-no-more.png" alt="">
+            <h5>Mumford & Sons</h5>
+            <p>1981 - Album</p>
+          </div>
+        </div> -->
+
+      </div>
+      
+    </div>
+
+    <div class="container-fluid">
+      <div class="row title-row mt-3 ml-3">
+        <div>
+          <h2 class="section-heading">Recommended for you</h2>
+          <h3 class="subheading-recommended ml-1">
+            Albums we think you'll get hooked on.
+          </h3>
+        </div>
+       <button id="second-see-all" class="see-all-button" onclick="seeAllTwo()"> <h4 class="see-all mt-5 mr-5">SEE ALL</h4></button>
+      </div>
+<div class="card-group">
+      <div id="recommended-row" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-6 ml-2 mr-1">
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont" id="corps">
+            <img src="assets/grand-corps-malade.png" alt="">
+            <h5>Grand Corps Malade</h5>
+            <p>2011 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/sigh-no-more.png" alt="">
+            <h5>Mumford & Sons</h5>
+            <p>2011 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+         <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/radiohead.png" alt="">
+            <h5>OK Computer</h5>
+            <p>1999 - Album</p>
+            <div class="play-button-div">
+              <div class="play-button-bg"></div>
+              <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/jake-bugg.png" alt="">
+            <h5>Jake Bugg</h5>
+            <p>2015 - Album</p><div class="play-button-div">
+              <div class="play-button-bg"></div>
+            <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/closing-time.png" alt="">
+            <h5>Tom Waits</h5>
+            <p>1981 - Album</p><div class="play-button-div">
+              <div class="play-button-bg"></div>
+            <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/vampire-weekend.PNG" alt="">
+            <h5>Hozier</h5>
+            <p>1981 - Album</p><div class="play-button-div">
+              <div class="play-button-bg"></div>
+            <i class="bi bi-play-circle-fill play-button"></i></div>
+          </div>
+        </div>
+
+        <!-- <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/illimatic.png" alt="">
+            <h5>Nas</h5>
+            <p>1981 - Album</p>
+          </div>
+        </div>
+
+        <div class="col album-card2 px-1">
+          <div class="album-card2-cont">
+            <img src="assets/vampire-weekend.PNG" alt="">
+            <h5>Vampire Weekend</h5>
+            <p>1981 - Album</p>
+          </div>
+        </div> -->
+
+      </div>
+    </div>
+   </div>
+</div>
+   <div class="container-fluid pb-5">
+    <!-- <button class="ml-3 btn btn-dark badge-pill" id="arrow1"> -->
+      <button class="ml-3 arrow-btn" id="arrow1">
+        <i class="bi bi-chevron-left"></i>
+      </button>
+
+      <a href="artist.html">
+        <button class="ml-3 arrow-btn arrow-btn-available" id="arrow2">
+          <i class="bi bi-chevron-right"></i>
+        </button>
+      </a>
+
+    <div class="dropdown dropdown-position">
+      <!-- <a href="login.html"> -->
+      <button class="dropdown-login-button dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img id="profilePic" src="https://strive.school/favicon.ico">
+        <span>Strive Student</span>
+      </button>
+    <!-- </a> -->
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="login.html">Profile</a>
+        <a class="dropdown-item" href="#">Private Session</a>
+        <a class="dropdown-item" href="#">Settings</a>
+        <a class="dropdown-item" href="#">Update Spotify</a>
+        <div class="dropdown-divider"></div>
+        <a href="login.html" class="dropdown-item" href="#">Log out</a>
+      </div>
+    </div>
+</div>    
+    <div class="container-fluid playbar">
+  <div class="row">
+    <div class="col-2 leftFooter d-none d-sm-none d-md-flex">
+            <div class="footerCover">
+                <img src="https://www.sleek-mag.com/wp-content/uploads/2016/08/AlbumCovers_Blonde.jpg"
+                class="img-fluid"
+                id="footercover">
+            </div>
+            <div class="footerSong ml-2 mt-1">
+              <p class="card-text my-1 ml-2" id="footerAlbum">Blond</p>
+              <p class="card-text my-1 ml-2" id="footerArtist"><small>Frank Ocean</small></p>
+            </div>
+            <div id="heart">
+              <button id="footerButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lightgrey" class="bi bi-suit-heart ml-2" viewBox="0 0 16 16">
+  <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>
+</svg>
+              </button>
+            </div>
+    </div>
+    <div class="col-8 middleFooter mt-2">
+      <div class="col-12 mt-2">
+        <div id="shuffle">
+          <button id="footerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lightgrey" class="bi bi-shuffle" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5z"/>
+  <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"/>
+</svg>
+          </button>
+        </div>
+
+        <div id="backward">
+          <button id="footerButton">
+             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lightgrey" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+  </svg>
+          </button>
+        </div>
+
+        <div id="play">
+          <button id="footerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-play-circle-fill" viewBox="0 0 16 16">
+  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM6.79 5.093A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814l-3.5-2.5z"/>
+</svg>
+        </button>
+        </div>
+
+        <div id="forward">
+          <button id="footerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lightgrey" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+  </svg>
+          </button>
+        </div>
+
+        <div id="repeat">
+          <button id="footerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="lightgrey" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+  <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+  <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
+</svg>
+          </button>
+        </div>
+      
+      </div>
+      <div class="col-12">
+        <p id="minute1" class="mx-2 my-2" color="white"><small>1:32</small></p>
+        <progress class="mx-2 my-2" id="file" max="190" value="120" fill="white"></progress>
+        <p id="minute2" class="mx-2 my-2" color="white"><small>2:34</small></p>
+      </div>
+    </div>
+    <div class="col-2 rightFooter mt-4 d-none d-sm-none d-md-flex">
+        <div id="queue">
+          <button id="footerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-music-note-list" viewBox="0 0 16 16">
+  <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+  <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+  <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+  <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+</svg>
+          </button>
+        </div>
+
+        <div id="device">
+          <button id="footerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-music-player" viewBox="0 0 16 16">
+  <path d="M4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3zm1 0v3h6V3H5zm3 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+  <path d="M11 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
+  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z"/>
+</svg>
+          </button>
+        </div>
+
+        <div id="volume" class="mr-1">
+          <button id="footerButton">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" class="bi bi-volume-down" viewBox="0 0 16 16">
+  <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12V4zM6.312 6.39 8 5.04v5.92L6.312 9.61A.5.5 0 0 0 6 9.5H4v-3h2a.5.5 0 0 0 .312-.11zM12.025 8a4.486 4.486 0 0 1-1.318 3.182L10 10.475A3.489 3.489 0 0 0 11.025 8 3.49 3.49 0 0 0 10 5.525l.707-.707A4.486 4.486 0 0 1 12.025 8z"/>
+</svg>
+          </button>
+        </div>
+        
+        <progress id="volumeProgress" max="80" value="70" fill="white"></progress>
+        
+    </div>
+
+  </div>
+</div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="assets/js/register.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+  
+
+</html>
+
